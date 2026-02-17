@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Zaat/Business Card</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Roboto:wght@500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="screen">
+
+    <!-- Logo -->
+    <img class="logo" src="pic/3.png" alt="Logo" />
+
+    <!-- Hero Background -->
+    <div class="hero">
+        <img class="hero-image" src="pic/Black Edition 1.png" alt="Hero Background" />
+        <div class="nfc-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 4H8V8H4V4Z" fill="white" opacity="0.7"/>
+                <path d="M4 10H8V14H4V10Z" fill="white" opacity="0.7"/>
+                <path d="M4 16H8V20H4V16Z" fill="white" opacity="0.7"/>
+                <path d="M10 4H14V8H10V4Z" fill="white" opacity="0.7"/>
+                <path d="M10 10H14V14H10V10Z" fill="white" opacity="0.7"/>
+                <path d="M10 16H14V20H10V16Z" fill="white" opacity="0.7"/>
+                <path d="M16 4H20V8H16V4Z" fill="white" opacity="0.7"/>
+                <path d="M16 10H20V14H16V10Z" fill="white" opacity="0.7"/>
+                <path d="M16 16H20V20H16V16Z" fill="white" opacity="0.7"/>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Profile Image -->
+    <div class="profile-wrapper">
+        <div class="profile">
+            <img src="pic/491657788_9297186927070277_1013650611272051640_n.jpg" alt="Profile Picture" />
+        </div>
+    </div>
+
+    <!-- Name -->
+    <div class="name">Awsam Raafat</div>
+    <div class="title">CEO / CO-Founder of Zaat</div>
+
+    <!-- Buttons -->
+    <div class="buttons">
+        <button class="btn-outline" onclick="window.open('https://www.instagram.com/zaatlink/', '_blank')">FOLLOW</button>
+        <button class="btn-solid" onclick="addToContacts()">CONTACT</button>
+    </div>
+
+    <!-- Bio -->
+    <div class="bio">
+        <div>🐍</div>
+        <div>Wanderer with a purpose</div>
+    </div>
+
+    <!-- Social Grid -->
+    <div class="grid">
+
+        <div class="card" onclick="window.open('https://www.instagram.com/whoisawsam/', '_blank')">
+            <div class="icon-wrapper instagram">
+                <img width="49" height="49" src="https://img.icons8.com/color/48/instagram-new--v1.png" alt="Instagram" />
+            </div>
+            <span>Instagram</span>
+        </div>
+
+        <div class="card" onclick="window.open('https://www.facebook.com/samrahmyy', '_blank')">
+            <div class="icon-wrapper facebook">
+                <img width="49" height="49" src="https://img.icons8.com/color/48/facebook-new.png" alt="Facebook" />
+            </div>
+            <span>Facebook</span>
+        </div>
+
+        
+
+        <div class="card" onclick="window.open('https://snapchat.com/t/lQ7RY7V8', '_blank')">
+            <div class="icon-wrapper snapchat">
+                <img width="49" height="49" src="https://img.icons8.com/color/48/snapchat-circled-logo--v1.png" alt="Snapchat" />
+            </div>
+            <span>Snapchat</span>
+        </div>
+
+
+
+        <div class="card" onclick="window.open('https://api.whatsapp.com/send?phone=201013890207', '_blank')">
+            <div class="icon-wrapper whatsapp">
+                <img width="49" height="49" src="https://img.icons8.com/sf-regular/48/40C057/whatsapp.png" alt="WhatsApp" />
+            </div>
+            <span>WhatsApp</span>
+        </div>
+
+        <div class="card" onclick="window.open('http://linkedin.com/in/awsamraafat', '_blank')">
+            <div class="icon-wrapper linkedin">
+                <img width="49" height="49" src="https://img.icons8.com/ios-filled/50/linkedin.png" alt="LinkedIn" />
+            </div>
+            <span>LinkedIn</span>
+        </div>
+
+        <div class="card" onclick="window.open('https://github.com/awsamraafat', '_blank')">
+            <div class="icon-wrapper github">
+                <img width="49" height="49" src="https://img.icons8.com/ios-glyphs/30/github.png" alt="GitHub" />
+            </div>
+            <span>GitHub</span>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    function addToContacts() {
+        // بيانات جهة الاتصال - يمكنك تعديلها
+        const contactData = {
+            firstName: 'Awsam',
+            lastName: 'Raafat',
+            fullName: 'Awsam Raafat',
+            jobTitle: 'CEO / CO-Founder of Zaat',
+            company: 'Zaat', // يمكنك تغيير اسم الشركة
+            phone: '+2011013890207', // ضع رقم هاتفك هنا
+            email: 'awsamraafatt@gmail.com', // ضع إيميلك هنا
+            website: 'https://zaatlink.com', // ضع موقعك هنا
+            address: 'Cairo, Egypt' // ضع عنوانك هنا
+        };
+
+        // إنشاء vCard format
+        const vcard = `BEGIN:VCARD
+VERSION:3.0
+FN:${contactData.fullName}
+N:${contactData.lastName};${contactData.firstName};;;
+ORG:${contactData.company}
+TITLE:${contactData.jobTitle}
+TEL;TYPE=CELL:${contactData.phone}
+EMAIL;TYPE=WORK:${contactData.email}
+URL:${contactData.website}
+ADR;TYPE=WORK:;;${contactData.address};;;;
+NOTE:Digital Business Card
+END:VCARD`;
+
+        // إنشاء blob و download link
+        const blob = new Blob([vcard], { type: 'text/vcard' });
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `${contactData.fullName.replace(/\s+/g, '_')}.vcf`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        window.URL.revokeObjectURL(url);
+
+        // محاولة فتح في تطبيق جهات الاتصال (يعمل على الهواتف)
+        if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+            // على الهواتف، سيتم فتح ملف vCard تلقائياً
+            setTimeout(() => {
+                window.location.href = `tel:${contactData.phone}`;
+            }, 500);
+        }
+    }
+</script>
+
+</body>
+</html>
