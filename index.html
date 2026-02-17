@@ -112,20 +112,20 @@
 
 <script>
     function addToContacts() {
-        // بيانات جهة الاتصال - يمكنك تعديلها
+        
         const contactData = {
             firstName: 'Awsam',
             lastName: 'Raafat',
             fullName: 'Awsam Raafat',
             jobTitle: 'CEO / CO-Founder of Zaat',
-            company: 'Zaat', // يمكنك تغيير اسم الشركة
-            phone: '+2011013890207', // ضع رقم هاتفك هنا
-            email: 'awsamraafatt@gmail.com', // ضع إيميلك هنا
-            website: 'https://zaatlink.com', // ضع موقعك هنا
-            address: 'Cairo, Egypt' // ضع عنوانك هنا
+            company: 'Zaat', 
+            phone: '+201013890207', 
+            email: 'awsamraafatt@gmail.com', 
+            website: 'https://zaatlink.com', 
+            address: 'Cairo, Egypt' 
         };
 
-        // إنشاء vCard format
+        
         const vcard = `BEGIN:VCARD
 VERSION:3.0
 FN:${contactData.fullName}
@@ -139,7 +139,7 @@ ADR;TYPE=WORK:;;${contactData.address};;;;
 NOTE:Digital Business Card
 END:VCARD`;
 
-        // إنشاء blob و download link
+        
         const blob = new Blob([vcard], { type: 'text/vcard' });
         const url = window.URL.createObjectURL(blob);
         const link = document.createElement('a');
@@ -150,9 +150,9 @@ END:VCARD`;
         document.body.removeChild(link);
         window.URL.revokeObjectURL(url);
 
-        // محاولة فتح في تطبيق جهات الاتصال (يعمل على الهواتف)
+        
         if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-            // على الهواتف، سيتم فتح ملف vCard تلقائياً
+           
             setTimeout(() => {
                 window.location.href = `tel:${contactData.phone}`;
             }, 500);
